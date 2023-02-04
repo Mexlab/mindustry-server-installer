@@ -1,0 +1,1 @@
+# mindustry-server-installer
