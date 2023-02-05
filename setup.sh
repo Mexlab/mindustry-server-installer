@@ -141,9 +141,11 @@ cat /home/$user/.mdconfig/mindustry-server-installer/motd.sh >> /home/$user/.bas
 sudo hostname -b mindustry-server
 homedir="/home/$user/"
 firstsetup="true"
+autoupdate="true"
 echo "$user" >> /home/$user/.mdconfig/inf.conf
 echo "$shouldroot" >> /home/$user/.mdconfig/inf.conf
 echo "$homedir" >> /home/$user/.mdconfig/inf.conf
+echo "$autoupdate" >> /home/$user/.mdconfig/inf.conf
 }
 
 function sysreboot {
