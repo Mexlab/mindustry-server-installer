@@ -32,3 +32,5 @@ $(tput sgr0)- Running Processes..: `ps ax | wc -l | tr -d " "`
 $(tput sgr0)- IP Addresses.......: `hostname -I | /usr/bin/cut -d " " -f 1` and `wget -q -O - http://icanhazip.com/ | tail`
 
 $(tput sgr0)"
+
+echo "type md --help for a list of commands"
