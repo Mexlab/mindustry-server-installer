@@ -189,5 +189,6 @@ exit 1
 fi
 firstsetup="false"
 echo "firstsetup=\"$firstsetup\"" >> /home/$user/.mdconfig/inf.conf
+chown -cR $user $userdir
 
 exit 0
