@@ -4,7 +4,7 @@
 if [ $EUID -eq 0 ]; then
 isroot="true"
 
-read -p "This script will do various changes on your device, only say yes if you know what you're doing [y/n] " tans #check users agreement
+read -p "This script will do various changes on your device, only continue if you know what you're doing [y/n] " tans #check users agreement
 if [ "$tans" != "y" ]; then
 echo "exit"
 exit 1
@@ -27,7 +27,7 @@ echo "installing some requirements..."
 echo ""
 apt update
 echo""
-apt install git whiptail curl neofetch screen -y
+apt install git whiptail curl neofetch screen jq -y
 apt install openjdk-17-jdk -y || echo "" && echo "cannot install Java 17, installing java 11" && echo "" && sleep 3 && apt install openjdk-11-jdk -y
 
 else
@@ -42,7 +42,7 @@ echo "installing some requirements"
 echo ""
 apt update
 echo ""
-apt install git whiptail curl neofetch screen -y
+apt install git whiptail curl neofetch screen jq -y
 fi
 
 }
@@ -138,12 +138,20 @@ git clone https://github.com/Mexlab/mindustry-server-installer.git
 mv -f /home/$user/mindustry-server-installer /home/$user/.mdconfig
 cat /home/$user/.profile > /home/$user/.bash_profile
 cat /home/$user/.mdconfig/mindustry-server-installer/motd.sh >> /home/$user/.bash_profile
+cp /home/$user/.mdconfig/mindustry-server-installer/* /home/$user/.mdconfig/
+grep -v "alias md" > /home/$user/.bashrc
+echo "alias md=\"/home/$user/.mdconfig/main.sh\"" >> /home/$user/.bashrc
+mkdir /home/$user/mindustryimages
+mkdir /home/$user/mindustryserver
 sudo hostname -b mindustry-server
 homedir="/home/$user"
 firstsetup="true"
-echo "$user" >> /home/$user/.mdconfig/inf.conf
-echo "$shouldroot" >> /home/$user/.mdconfig/inf.conf
-echo "$homedir" >> /home/$user/.mdconfig/inf.conf
+autoupdate="true"
+echo "user=\"$user\"" >> /home/$user/.mdconfig/inf.conf
+echo "shouldroot=\"$shouldroot\"" >> /home/$user/.mdconfig/inf.conf
+echo "homedir=\"$homedir\"" >> /home/$user/.mdconfig/inf.conf
+echo "autoupdate=\"$autoupdate\"" >> /home/$user/.mdconfig/inf.conf
+echo "succecsfull updated inf.conf"
 }
 
 function sysreboot {
@@ -180,6 +188,6 @@ echo "no reboot"
 exit 1
 fi
 firstsetup="false"
-echo "$firstsetup" >> /home/$user/.mdconfig/inf.conf
+echo "firstsetup=\"$firstsetup\"" >> /home/$user/.mdconfig/inf.conf
 
 exit 0
