@@ -1,5 +1,5 @@
 #!/bin/bash
-#this script will install all reqirements for Mindustry
+#this script will install all reqirements for MindustryOS
 #check if root
 if [ $EUID -eq 0 ]; then
 isroot="true"
