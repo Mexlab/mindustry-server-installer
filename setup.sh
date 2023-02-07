@@ -141,7 +141,7 @@ mv -f /home/$user/mindustry-server-installer /home/$user/.mdconfig
 cat /home/$user/.profile > /home/$user/.bash_profile
 cat /home/$user/.mdconfig/mindustry-server-installer/motd.sh >> /home/$user/.bash_profile
 cp /home/$user/.mdconfig/mindustry-server-installer/* /home/$user/.mdconfig/
-grep -v "alias md" > /home/$user/.bashrc
+grep -v "alias md" /home/$user/.bashrc > /home/$user/.bashrc
 echo "alias md=\"/home/$user/.mdconfig/main.sh\"" >> /home/$user/.bashrc
 mkdir /home/$user/mindustryimages
 mkdir /home/$user/mindustryserver
