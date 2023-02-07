@@ -72,6 +72,7 @@ break
 fi
 
 if [ "$password" == "$rpassword" ]; then
+echo "$user:$password" |chpasswd 
 return 0
 break
 else
