@@ -139,7 +139,7 @@ mv -f /home/$user/mindustry-server-installer /home/$user/.mdconfig
 cat /home/$user/.profile > /home/$user/.bash_profile
 cat /home/$user/.mdconfig/mindustry-server-installer/motd.sh >> /home/$user/.bash_profile
 sudo hostname -b mindustry-server
-homedir="/home/$user/"
+homedir="/home/$user"
 firstsetup="true"
 echo "$user" >> /home/$user/.mdconfig/inf.conf
 echo "$shouldroot" >> /home/$user/.mdconfig/inf.conf
