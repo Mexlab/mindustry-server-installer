@@ -73,6 +73,7 @@ fi
 
 if [ "$password" == "$rpassword" ]; then
 echo "$user:$password" |chpasswd 
+echo "/etc/skel/.bashrc" > "/home/$user/.bashrc"
 return 0
 break
 else
